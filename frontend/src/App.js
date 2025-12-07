@@ -8,7 +8,7 @@ import Compiler from './pages/Compiler';
 import Practice from './pages/Practice';
 import LessonView from './pages/LessonView';
 import Admin from './pages/Admin';
-import Admin from './pages/Admin';
+
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
