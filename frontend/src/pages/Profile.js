@@ -24,19 +24,22 @@ const Profile = () => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                // Fetch all users to find the specific "divahar" user for this demo
-                const res = await axios.get(`${API_URL}/api/users`);
-                const users = res.data;
+                // Get logged in user from local storage
+                const loggedInUser = JSON.parse(localStorage.getItem('user'));
+                const userId = loggedInUser ? loggedInUser._id : null;
 
-                // TARGET "divahar" specifically as requested by the user for the "logged in" view
-                const specificUser = users.find(u => u.name.toLowerCase() === 'divahar') || users.find(u => u.role === 'student') || users[0];
-
-                if (specificUser) {
-                    // Fetch full details
-                    const detailRes = await axios.get(`${API_URL}/api/users/${specificUser._id}`);
+                if (userId) {
+                    const detailRes = await axios.get(`${API_URL}/api/users/${userId}`);
                     setUser(detailRes.data);
+                    // Pre-fill form data
+                    setFormData(prev => ({
+                        ...prev,
+                        profilePicture: detailRes.data.profilePicture || '',
+                        bio: detailRes.data.bio || ''
+                        // Add other fields mapping if they exist in backend
+                    }));
                 } else {
-                    setError('No user found');
+                    setError('Please log in to view profile');
                 }
                 setLoading(false);
             } catch (err) {
@@ -53,9 +56,21 @@ const Profile = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSave = () => {
-        console.log("Saving Profile Data:", formData);
-        alert("Profile details saved!");
+    const handleSave = async () => {
+        try {
+            // Update backend
+            await axios.put(`${API_URL}/api/users/${user._id}`, formData);
+
+            // Update local state and storage
+            const updatedUser = { ...user, ...formData };
+            setUser(updatedUser);
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+
+            alert("Profile details updated successfully!");
+            window.location.reload(); // Reload to update Navbar
+        } catch (err) {
+            alert("Error updating profile: " + err.message);
+        }
     };
 
     if (loading) return <div className="loading-spinner">Loading Profile...</div>;
@@ -67,8 +82,22 @@ const Profile = () => {
             <Navbar />
             <div className="profile-container">
                 <div className="profile-header">
-                    <div className="profile-avatar">
-                        <FaUser />
+                    <div className="profile-avatar-container">
+                        <img
+                            src={formData.profilePicture || `https://ui-avatars.com/api/?name=${user.name}&background=random`}
+                            alt="Profile"
+                            className="profile-avatar-img"
+                        />
+                        <div className="avatar-edit-overlay">
+                            <input
+                                type="text"
+                                name="profilePicture"
+                                value={formData.profilePicture}
+                                onChange={handleInputChange}
+                                placeholder="Paste Image URL here..."
+                                className="avatar-url-input"
+                            />
+                        </div>
                     </div>
                     <div className="profile-info">
                         <h1>{user.name}</h1>

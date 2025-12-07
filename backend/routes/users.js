@@ -30,6 +30,38 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// PUT - Update User Profile (Self or Admin) - Handles Name, Avatar, Bio, etc.
+router.put('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        // Update standard fields
+        if (req.body.name) user.name = req.body.name;
+        if (req.body.profilePicture !== undefined) user.profilePicture = req.body.profilePicture;
+
+        // Update extended profile fields
+        const profileFields = ['bio', 'skills', 'collegeName', 'collegeDegree', 'collegeYear',
+            'schoolName', 'schoolBoard', 'schoolYear', 'interviewAlignment'];
+
+        profileFields.forEach(field => {
+            if (req.body[field] !== undefined) {
+                user[field] = req.body[field];
+            }
+        });
+
+        const updatedUser = await user.save();
+
+        // Return updated user sans password
+        const userResponse = updatedUser.toObject();
+        delete userResponse.password;
+
+        res.json(userResponse);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
 // POST - Public Signup (Needs Approval)
 router.post('/signup', async (req, res) => {
     const user = new User({
