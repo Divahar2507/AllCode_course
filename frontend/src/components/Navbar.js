@@ -12,6 +12,7 @@ const Navbar = () => {
     const { isDarkMode, toggleTheme } = useTheme();
     const navigate = useNavigate();
     const dropdownRef = useRef(null);
+    const user = JSON.parse(localStorage.getItem('user'));
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -27,7 +28,8 @@ const Navbar = () => {
     }, []);
 
     const handleLogout = () => {
-        // Implement logout logic here
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         alert("Logged out successfully");
         navigate('/');
     };
@@ -68,12 +70,11 @@ const Navbar = () => {
                                 <div className="profile-dropdown">
                                     <div className="dropdown-header-user">
                                         <div className="user-avatar-large">
-                                            <img src="https://ui-avatars.com/api/?name=divahar&background=random" alt="Avatar" />
+                                            <img src={`https://ui-avatars.com/api/?name=${user?.name || 'User'}&background=random`} alt="Avatar" />
                                         </div>
                                         <div className="user-info-text">
-                                            <div className="user-name">divahar</div>
-                                            <div className="user-batch">May Batch 2025</div>
-                                            <div className="user-status">Offline</div>
+                                            <div className="user-name">{user?.name || 'Guest User'}</div>
+                                            <div className="user-batch">{user?.batch || 'No Batch Assigned'}</div>
                                         </div>
                                     </div>
                                     <div className="dropdown-divider"></div>
