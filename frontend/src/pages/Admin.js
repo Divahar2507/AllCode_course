@@ -25,10 +25,12 @@ const AdminPanel = () => {
     const [newTopic, setNewTopic] = useState({ title: '', type: 'video', videoUrl: '' });
     const [activeModuleId, setActiveModuleId] = useState(null); // Which module we are adding a topic to
 
-    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(true);
-    const [adminCredentials, setAdminCredentials] = useState({
-        email: '',
-        password: ''
+    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
+        return localStorage.getItem('adminLoggedIn') === 'true';
+    });
+    const [adminCredentials, setAdminCredentials] = useState(() => {
+        const saved = localStorage.getItem('adminCredentials');
+        return saved ? JSON.parse(saved) : { email: '', password: '' };
     });
     const [stats, setStats] = useState({
         totalCourses: 0,
@@ -348,6 +350,8 @@ const AdminPanel = () => {
 
             if (response.data.user.role === 'admin') {
                 setIsAdminLoggedIn(true);
+                localStorage.setItem('adminLoggedIn', 'true');
+                localStorage.setItem('adminCredentials', JSON.stringify(adminCredentials));
                 alert('Admin login successful!');
                 fetchCourses();
                 fetchUsers();
@@ -360,6 +364,13 @@ const AdminPanel = () => {
             alert('Login failed: ' + (err.response?.data?.message || err.message));
             setAdminCredentials({ email: '', password: '' });
         }
+    };
+
+    const handleLogout = () => {
+        setIsAdminLoggedIn(false);
+        setAdminCredentials({ email: '', password: '' });
+        localStorage.removeItem('adminLoggedIn');
+        localStorage.removeItem('adminCredentials');
     };
 
     const handleAdminLogout = () => {

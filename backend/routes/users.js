@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
         if (req.body.profilePicture !== undefined) user.profilePicture = req.body.profilePicture;
 
         // Update extended profile fields
-        const profileFields = ['bio', 'skills', 'collegeName', 'collegeDegree', 'collegeYear',
+        const profileFields = ['bio', 'skills', 'hobbies', 'interests', 'collegeName', 'collegeDegree', 'collegeYear',
             'schoolName', 'schoolBoard', 'schoolYear', 'interviewAlignment'];
 
         profileFields.forEach(field => {

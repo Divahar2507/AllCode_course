@@ -35,8 +35,17 @@ const Profile = () => {
                     setFormData(prev => ({
                         ...prev,
                         profilePicture: detailRes.data.profilePicture || '',
-                        bio: detailRes.data.bio || ''
-                        // Add other fields mapping if they exist in backend
+                        bio: detailRes.data.bio || '',
+                        hobbies: detailRes.data.hobbies || '',
+                        interests: detailRes.data.interests || '',
+                        collegeName: detailRes.data.collegeName || '',
+                        collegeDegree: detailRes.data.collegeDegree || '',
+                        collegeYear: detailRes.data.collegeYear || '',
+                        schoolName: detailRes.data.schoolName || '',
+                        schoolBoard: detailRes.data.schoolBoard || '',
+                        schoolYear: detailRes.data.schoolYear || '',
+                        skills: detailRes.data.skills || '',
+                        interviewAlignment: detailRes.data.interviewAlignment || 'Beginner'
                     }));
                 } else {
                     setError('Please log in to view profile');
@@ -128,6 +137,22 @@ const Profile = () => {
                     <div className="form-section">
                         <h3>💡 Skills & Expertise</h3>
                         <textarea name="skills" placeholder="List your technical skills (e.g., React, Java, Python)" value={formData.skills} onChange={handleInputChange} rows="3"></textarea>
+                    </div>
+
+                    <div className="form-section">
+                        <h3>🎨 Interests & Hobbies</h3>
+                        <div className="form-group-row">
+                            <input type="text" name="hobbies" placeholder="Hobbies (e.g., Chess, Reading)" value={formData.hobbies} onChange={handleInputChange} />
+                            <input type="text" name="interests" placeholder="Interests (e.g., AI, Web3)" value={formData.interests} onChange={handleInputChange} />
+                        </div>
+                    </div>
+
+                    <div className="form-section">
+                        <h3>🎨 Interests & Hobbies</h3>
+                        <div className="form-group-row">
+                            <input type="text" name="hobbies" placeholder="Hobbies (e.g., Chess, Reading)" value={formData.hobbies} onChange={handleInputChange} />
+                            <input type="text" name="interests" placeholder="Interests (e.g., AI, Web3)" value={formData.interests} onChange={handleInputChange} />
+                        </div>
                     </div>
 
                     <div className="form-section">

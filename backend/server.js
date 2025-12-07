@@ -28,6 +28,7 @@ if (!fs.existsSync(tempDir)) {
 const coursesRouter = require('./routes/courses');
 const usersRouter = require('./routes/users');
 const batchesRouter = require('./routes/batches');
+const postsRouter = require('./routes/posts');
 
 // Routes
 app.get('/', (req, res) => {
@@ -37,6 +38,7 @@ app.get('/', (req, res) => {
 app.use('/api/courses', coursesRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/batches', batchesRouter);
+app.use('/api/posts', postsRouter);
 
 app.get('/api/hello', (req, res) => {
     res.json({ message: "Hello from AllCode API" });

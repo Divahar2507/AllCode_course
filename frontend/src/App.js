@@ -11,6 +11,7 @@ import Admin from './pages/Admin';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Placements from './pages/Placements';
+import Community from './pages/Community';
 import FeaturePlaceholder from './pages/FeaturePlaceholder';
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/placements" element={<Placements />} />
+            <Route path="/community" element={<Community />} />
 
             {/* New Routes for Dropdown Menu */}
             <Route path="/resume" element={<FeaturePlaceholder title="Resume Builder" />} />

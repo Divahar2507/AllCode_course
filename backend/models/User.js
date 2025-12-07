@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     },
     isApproved: {
         type: Boolean,
-        default: false
+        default: true
     },
     batch: {
         type: mongoose.Schema.Types.ObjectId,
@@ -48,6 +48,8 @@ const userSchema = new mongoose.Schema({
     // Profile Fields
     bio: String,
     skills: String,
+    hobbies: String,
+    interests: String,
     collegeName: String,
     collegeDegree: String,
     collegeYear: String,
