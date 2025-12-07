@@ -45,18 +45,51 @@ const userSchema = new mongoose.Schema({
             default: 0
         }
     }],
-    // Profile Fields
+    // --- Extended Profile Fields ---
+    // Personal
+    gender: String,
+    dob: Date,
+    phone: String,
+    altPhone: String,
+
+    // Professional
+    workExperience: { type: String, default: 'Fresher' },
+    careerGap: { type: String, default: '0' },
+    currentState: String,
+    currentCity: String,
+    preferredLocation: String,
+
+    // Social Links
+    githubLink: String,
+    linkedinLink: String,
+    resumeLink: String,
+
+    // Education - 10th
+    tenthSchool: String,
+    tenthYear: String,
+    tenthMarks: String,
+
+    // Education - 12th/Diploma
+    twelfthSchool: String, // Or Diploma College
+    twelfthYear: String,
+    twelfthMarks: String,
+
+    // Education - UG
+    collegeName: String,
+    collegeRollNo: String,
+    collegeDegree: String, // e.g., B.Tech
+    collegeBranch: String, // e.g., CSE
+    collegeYear: String,
+    collegeMarks: String, // Percentage
+    collegeCGPA: String,
+    activeBacklogs: { type: String, default: 'No Backlogs' },
+
+    // Existing fields mapped
     bio: String,
     skills: String,
     hobbies: String,
     interests: String,
-    collegeName: String,
-    collegeDegree: String,
-    collegeYear: String,
-    schoolName: String,
-    schoolBoard: String,
-    schoolYear: String,
-    interviewAlignment: String,
+
     createdAt: {
         type: Date,
         default: Date.now
