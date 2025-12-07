@@ -30,6 +30,10 @@ const usersRouter = require('./routes/users');
 const batchesRouter = require('./routes/batches');
 
 // Routes
+app.get('/', (req, res) => {
+    res.send("API is Running Successfully");
+});
+
 app.use('/api/courses', coursesRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/batches', batchesRouter);
