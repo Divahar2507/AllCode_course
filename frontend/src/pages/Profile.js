@@ -83,8 +83,27 @@ const Profile = () => {
     };
 
     if (loading) return <div className="loading-spinner">Loading Profile...</div>;
-    if (error) return <div className="error-message">{error}</div>;
-    if (!user) return <div className="error-message">User not found</div>;
+    if (loading) return <div className="loading-spinner">Loading Profile...</div>;
+
+    if (error || !user) {
+        return (
+            <div className="profile-page">
+                <Navbar />
+                <div className="error-container" style={{ textAlign: 'center', marginTop: '100px', padding: '20px' }}>
+                    <h2>Please Log In</h2>
+                    <p style={{ marginBottom: '20px', color: '#666' }}>You need to be logged in to view your profile.</p>
+                    <a href="/login" style={{
+                        padding: '10px 20px',
+                        background: '#007BFF',
+                        color: 'white',
+                        textDecoration: 'none',
+                        borderRadius: '5px',
+                        fontWeight: 'bold'
+                    }}>Go to Login</a>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="profile-page">

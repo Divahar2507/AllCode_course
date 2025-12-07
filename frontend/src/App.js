@@ -8,7 +8,9 @@ import Compiler from './pages/Compiler';
 import Practice from './pages/Practice';
 import LessonView from './pages/LessonView';
 import Admin from './pages/Admin';
+import Admin from './pages/Admin';
 import Register from './pages/Register';
+import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Placements from './pages/Placements';
 import Community from './pages/Community';
@@ -29,6 +31,7 @@ function App() {
             <Route path="/practice" element={<Practice />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/placements" element={<Placements />} />
             <Route path="/community" element={<Community />} />
