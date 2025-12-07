@@ -1,0 +1,148 @@
+.course-card {
+    background-color: #000;
+    border-radius: 8px;
+    border-top: 5px solid;
+    /* Color set inline */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    min-width: 350px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    position: relative;
+    border: 1px solid #007BFF;
+    border-top-width: 5px;
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.course-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.course-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.course-info .mentor {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.status-badge {
+    margin-left: auto;
+}
+
+.badge {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    border: 1px solid;
+}
+
+.badge.warning {
+    color: #F57C00;
+    border-color: #F57C00;
+    background-color: #FFF3E0;
+}
+
+.badge.info {
+    color: #1976D2;
+    border-color: #1976D2;
+    background-color: #E3F2FD;
+}
+
+.badge.success {
+    color: #2E7D32;
+    border-color: #2E7D32;
+    background-color: #E8F5E9;
+}
+
+.progress-section {
+    margin-bottom: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background-color: #E0E0E0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #007BFF;
+    border-radius: 3px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.class-time {
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    color: #888;
+}
+
+.time-val {
+    font-weight: 600;
+    color: #fff;
+    margin-top: 2px;
+}
+
+.join-btn {
+    background: #007BFF;
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.join-btn:hover {
+    background: #0056b3;
+}

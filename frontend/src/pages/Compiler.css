@@ -1,0 +1,108 @@
+.compiler-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+}
+
+.compiler-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+}
+
+.compiler-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.lang-select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-element);
+    color: var(--text-inverse);
+    font-weight: 500;
+}
+
+.run-btn {
+    background-color: var(--bg-element);
+    color: var(--text-inverse);
+    border: 1px solid var(--border-color);
+    padding: 8px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.run-btn:hover {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+}
+
+.editor-layout {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    height: calc(100vh - 140px);
+}
+
+.editor-section {
+    flex: 2;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.io-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.panel {
+    flex: 1;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+}
+
+.panel-header {
+    padding: 8px 15px;
+    background-color: var(--bg-hover);
+    color: var(--text-main);
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-content {
+    flex: 1;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: none;
+    padding: 10px;
+    resize: none;
+    font-family: monospace;
+    outline: none;
+}
+
+.output-text {
+    color: var(--text-main);
+    white-space: pre-wrap;
+}
